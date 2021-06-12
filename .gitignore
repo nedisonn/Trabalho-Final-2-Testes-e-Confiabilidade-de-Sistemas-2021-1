@@ -50,3 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+test/.DS_Store
+test/test_runners/.DS_Store
+Unity/.DS_Store
+Unity/extras/.DS_Store
+Unity/extras/fixture/.DS_Store
+Unity/test/.DS_Store
