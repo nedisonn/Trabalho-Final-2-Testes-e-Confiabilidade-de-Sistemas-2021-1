@@ -250,3 +250,101 @@ void TestingDecryptionAES128_FAILWrongType(void)
 
     TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
 }
+
+//Testes com falhas -- AES-192
+void TestingEncryptionAES192_FAILWrongKey(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_4, input, 2, 1, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_enc_AES_192, output, 4, "FAIL is expected.");
+}
+
+void TestingDecryptionAES192_FAILWrongKey(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_4, input_dec_AES_192, 2, 2, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
+}
+
+void TestingEncryptionAES192_FAILWrongInput(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_6, input_dec_AES_192, 2, 1, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_enc_AES_192, output, 4, "FAIL is expected.");
+}
+
+void TestingDecryptionAES192_FAILWrongInput(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_6, input, 2, 2, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
+}
+
+void TestingEncryptionAES192_FAILWrongType(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_6, input, 5, 1, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_enc_AES_192, output, 4, "FAIL is expected.");
+}
+
+void TestingDecryptionAES192_FAILWrongType(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_6, input_dec_AES_192, 5, 2, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
+}
+
+//Testes com falhas -- AES-256
+void TestingEncryptionAES256_FAILWrongKey(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_6, input, 3, 1, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_enc_AES_256, output, 4, "FAIL is expected.");
+}
+
+void TestingDecryptionAES256_FAILWrongKey(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_6, input_dec_AES_256, 3, 2, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
+}
+
+void TestingEncryptionAES256_FAILWrongInput(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_8, input_dec_AES_256, 3, 1, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_enc_AES_256, output, 4, "FAIL is expected.");
+}
+
+void TestingDecryptionAES256_FAILWrongInput(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_8, input, 3, 2, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
+}
+
+void TestingEncryptionAES256_FAILWrongType(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_8, input, 6, 1, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_enc_AES_256, output, 4, "FAIL is expected.");
+}
+
+void TestingDecryptionAES256_FAILWrongType(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_8, input_dec_AES_256, 6, 2, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
+}
