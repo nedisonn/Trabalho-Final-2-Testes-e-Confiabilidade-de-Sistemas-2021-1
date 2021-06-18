@@ -40,6 +40,7 @@ const unsigned int input_dec_BLOWFISH_256[4] = {0x4B733E3CL, 0x24723D9EL, 0xE4C4
 const unsigned int expected_output_dec[4] = {0x8FB0F364L, 0x18144208L, 0x15F6BA22L, 0x84CD53F2L};
 
 
+//Testes de Sucessos
 void TestingEncryptionXTEA_SUCESS(void)
 {
     unsigned int output[4] = {};
@@ -152,10 +153,53 @@ void TestingDecryptionBLOWFISH256_SUCESS(void)
     TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_dec, output, 4, "True is expected.");
 }
 
-void TestingDecryptionXTEA_SUCESS(void)
+//Testes com falhas -- XTEA
+void TestingEncryptionXTEA_FAILWrongKey(void)
 {
     unsigned int output[4] = {};
-    crypt(key_4, input_dec_XTEA, 0, 2, output);
+    crypt(key_6, input, 0, 1, output);
 
-    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_dec, output, 4, "True is expected.");
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_enc_XTEA, output, 4, "FAIL is expected.");
 }
+
+void TestingDecryptionXTEA_FAILWrongKey(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_6, input_dec_XTEA, 0, 2, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
+}
+
+void TestingEncryptionXTEA_FAILWrongInput(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_4, input_dec_XTEA, 0, 1, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_enc_XTEA, output, 4, "FAIL is expected.");
+}
+
+void TestingDecryptionXTEA_FAILWrongInput(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_4, input, 0, 2, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
+}
+
+void TestingEncryptionXTEA_FAILWrongType(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_4, input, 4, 2, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_enc_XTEA, output, 4, "FAIL is expected.");
+}
+
+void TestingEncryptionXTEA_FAILWrongType(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_4, input_dec_XTEA, 1, 2, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
+}
+
+//Testes com falhas -- AES-128
