@@ -10,7 +10,7 @@ TEST_TEAR_DOWN()
 {
 }
 const unsigned int key_4[4] = {
-    0x561C204DL, 0x2F9CB4DEL,
+    1, 0x2F9CB4DEL,
     0x135E4234L, 0xECFA1B16L
 };
 const unsigned int key_6[6] = {
@@ -189,12 +189,12 @@ void TestingDecryptionXTEA_FAILWrongInput(void)
 void TestingEncryptionXTEA_FAILWrongType(void)
 {
     unsigned int output[4] = {};
-    crypt(key_4, input, 4, 2, output);
+    crypt(key_4, input, 4, 1, output);
 
     TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_enc_XTEA, output, 4, "FAIL is expected.");
 }
 
-void TestingEncryptionXTEA_FAILWrongType(void)
+void TestingDecryptionXTEA_FAILWrongType(void)
 {
     unsigned int output[4] = {};
     crypt(key_4, input_dec_XTEA, 1, 2, output);
@@ -203,3 +203,50 @@ void TestingEncryptionXTEA_FAILWrongType(void)
 }
 
 //Testes com falhas -- AES-128
+void TestingEncryptionAES128_FAILWrongKey(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_6, input, 1, 1, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_enc_AES_128, output, 4, "FAIL is expected.");
+}
+
+void TestingDecryptionAES128_FAILWrongKey(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_6, input_dec_AES_128, 1, 2, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
+}
+
+void TestingEncryptionAES128_FAILWrongInput(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_4, input_dec_AES_128, 1, 1, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_enc_AES_128, output, 4, "FAIL is expected.");
+}
+
+void TestingDecryptionAES128_FAILWrongInput(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_4, input, 1, 2, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
+}
+
+void TestingEncryptionAES128_FAILWrongType(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_4, input, 4, 1, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_enc_AES_128, output, 4, "FAIL is expected.");
+}
+
+void TestingDecryptionAES128_FAILWrongType(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_4, input_dec_AES_128, 0, 2, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
+}
