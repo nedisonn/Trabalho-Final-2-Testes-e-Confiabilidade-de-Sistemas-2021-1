@@ -26,7 +26,7 @@ C_COMPILER=clang
 endif
 
 GCCFLAGS = -g -Wall -Wfatal-errors 
-ALL = identifier
+ALL = crypt
 GCC = gcc
 
 UNITY_ROOT=Unity
@@ -51,16 +51,16 @@ TARGET1 = $(TARGET_BASE1)$(TARGET_EXTENSION)
 SRC_FILES1=\
   $(UNITY_ROOT)/src/unity.c \
   $(UNITY_ROOT)/extras/fixture/src/unity_fixture.c \
-  identifier_without_main.c \
-  test/identifier_test.c \
-  test/test_runners/identifier_test_Runner.c
+  test/crypt_test.c \
+  test/test_runners/crypt_test_Runner.c
 INC_DIRS=-Isrc -I$(UNITY_ROOT)/src 
 SYMBOLS=
+SRC_FILES_CRYPT += $(wildcard src/*.c)
 
-all: clean identifier compile run
+all: clean compile run
 
 compile:
-	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES1) -o $(TARGET1)
+	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES_CRYPT) $(SRC_FILES1) -o $(TARGET1)
 
 run:
 	- ./$(TARGET1)
@@ -69,11 +69,13 @@ clean:
 	$(CLEANUP) $(TARGET1)
 	sudo rm -fr $(ALL) *.o cov* *.dSYM *.gcda *.gcno *.gcov
 
-identifier: identifier.c
-	$(GCC) $(GCCFLAGS) -o $@ $@.c
+crypt: $(SRC_FILES)
+	$(CC) $(CFLAGS) $^
+	$(CC) *.o -o app
+	rm -rf *.o
 
-cov: identifier.c
-	$(GCC) $(GCCFLAGS) -fprofile-arcs -ftest-coverage -o cov identifier.c
+cov: crypt.c
+	$(GCC) $(GCCFLAGS) -fprofile-arcs -ftest-coverage -o cov crypt.c
 	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES1) -fprofile-arcs -ftest-coverage -o $(TARGET1)
 	echo 'oi123' | ./cov | echo "saida"
 	echo 'Yaya' | ./cov | echo "saida"
@@ -82,9 +84,7 @@ cov: identifier.c
 	echo 'oi_12' | ./cov | echo "saida"
 	echo 'oi1234' | ./cov | echo "saida" 
 	echo 'Nedison' | ./cov | echo "saida"
-	gcov -b identifier.gnco
-test/test_runners/identifier_test_Runner.c: test/identifier_test.c
-	ruby $(UNITY_ROOT)/auto/generate_test_runner.rb test/identifier_test.c  test/test_runners/identifier_test_Runner.c
+	gcov -b crypt.gnco
 
 ci: CFLAGS += -Werror
 ci: compile

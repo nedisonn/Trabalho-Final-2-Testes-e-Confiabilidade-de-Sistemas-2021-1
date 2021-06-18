@@ -28,8 +28,7 @@
 extern void setUp(void);
 extern void tearDown(void);
 
-extern void TestandoValidacaoParaCharDeAOuaAteZOuz_1(void);
-extern void TestandoMain_ComecandoComLetraApenasLetrasInvalido(void);
+extern void TestingCryptXTEA_SUCESS(void);
 /*=======Test Reset Option=====*/
 void resetTest(void);
 void resetTest(void)
@@ -43,7 +42,6 @@ void resetTest(void)
 int main(void)
 {
   UnityBegin("../crypt_test.c");
-  RUN_TEST(TestandoValidacaoParaCharDeAOuaAteZOuz_1,12);
-  RUN_TEST(TestandoMain_ComecandoComLetraApenasLetrasInvalido,226);
+  RUN_TEST(TestingCryptXTEA_SUCESS,12);
   return (UnityEnd());
 }
