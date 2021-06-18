@@ -348,3 +348,150 @@ void TestingDecryptionAES256_FAILWrongType(void)
 
     TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
 }
+
+//Testes com falhas -- BLOWFISH-128
+void TestingEncryptionBLOWFISH128_FAILWrongKey(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_6, input, 4, 1, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_enc_BLOWFISH_128, output, 4, "FAIL is expected.");
+}
+
+void TestingDecryptionBLOWFISH128_FAILWrongKey(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_6, input_dec_BLOWFISH_128, 4, 2, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
+}
+
+void TestingEncryptionBLOWFISH128_FAILWrongInput(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_4, input_dec_BLOWFISH_128, 4, 1, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_enc_BLOWFISH_128, output, 4, "FAIL is expected.");
+}
+
+void TestingDecryptionBLOWFISH128_FAILWrongInput(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_4, input, 4, 2, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
+}
+
+void TestingEncryptionBLOWFISH128_FAILWrongType(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_4, input, 1, 1, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_enc_BLOWFISH_128, output, 4, "FAIL is expected.");
+}
+
+void TestingDecryptionBLOWFISH128_FAILWrongType(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_4, input_dec_BLOWFISH_128, 0, 2, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
+}
+
+//Testes com falhas -- BLOWFISH-192
+void TestingEncryptionBLOWFISH192_FAILWrongKey(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_4, input, 5, 1, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_enc_BLOWFISH_192, output, 4, "FAIL is expected.");
+}
+
+void TestingDecryptionBLOWFISH192_FAILWrongKey(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_4, input_dec_BLOWFISH_192, 5, 2, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
+}
+
+void TestingEncryptionBLOWFISH192_FAILWrongInput(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_6, input_dec_BLOWFISH_192, 5, 1, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_enc_BLOWFISH_192, output, 4, "FAIL is expected.");
+}
+
+void TestingDecryptionBLOWFISH192_FAILWrongInput(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_6, input, 5, 2, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
+}
+
+void TestingEncryptionBLOWFISH192_FAILWrongType(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_6, input, 2, 1, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_enc_BLOWFISH_192, output, 4, "FAIL is expected.");
+}
+
+void TestingDecryptionBLOWFISH192_FAILWrongType(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_6, input_dec_BLOWFISH_192, 2, 2, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
+}
+
+//Testes com falhas -- BLOWFISH-256
+void TestingEncryptionBLOWFISH256_FAILWrongKey(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_6, input, 4, 1, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_enc_BLOWFISH_256, output, 4, "FAIL is expected.");
+}
+
+void TestingDecryptionBLOWFISH256_FAILWrongKey(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_6, input_dec_BLOWFISH_256, 4, 2, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
+}
+
+void TestingEncryptionBLOWFISH256_FAILWrongInput(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_4, input_dec_BLOWFISH_256, 4, 1, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_enc_BLOWFISH_256, output, 4, "FAIL is expected.");
+}
+
+void TestingDecryptionBLOWFISH256_FAILWrongInput(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_4, input, 4, 2, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
+}
+
+void TestingEncryptionBLOWFISH256_FAILWrongType(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_4, input, 3, 1, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_enc_BLOWFISH_256, output, 4, "FAIL is expected.");
+}
+
+void TestingDecryptionBLOWFISH256_FAILWrongType(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_4, input_dec_BLOWFISH_256, 3, 2, output);
+
+    TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
+}
