@@ -3,12 +3,6 @@
 #include "unity.h"
 #include "../src/crypt.h" 
 #define DOING_UNIT_TESTS
-TEST_SETUP()
-{
-}
-TEST_TEAR_DOWN()
-{
-}
 const unsigned int key_4[4] = {
     0x561C204DL, 0x2F9CB4DEL,
     0x135E4234L, 0xECFA1B16L

@@ -45,6 +45,11 @@ CFLAGS += -Wno-unknown-pragmas
 CFLAGS += -Wstrict-prototypes
 CFLAGS += -Wundef
 CFLAGS += -Wold-style-definition
+CFLAGS += -Wno-int-to-void-pointer-cast
+CFLAGS += -Wno-int-to-pointer-cast
+CFLAGS += -Wno-int-conversion
+CFLAGS += -Wno-excess-initializers
+CFLAGS += -Wno-incompatible-pointer-types-discards-qualifiers
 
 TARGET_BASE1=all_tests
 TARGET1 = $(TARGET_BASE1)$(TARGET_EXTENSION)
