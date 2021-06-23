@@ -81,15 +81,19 @@ crypt: $(SRC_FILES)
 
 cov: crypt.c
 	$(GCC) $(GCCFLAGS) -fprofile-arcs -ftest-coverage -o cov crypt.c
-	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES1) -fprofile-arcs -ftest-coverage -o $(TARGET1)
-	echo 'oi123' | ./cov | echo "saida"
-	echo 'Yaya' | ./cov | echo "saida"
-	echo '123oi' | ./cov | echo "saida"
-	echo ' ' | ./cov | echo "saida"
-	echo 'oi_12' | ./cov | echo "saida"
-	echo 'oi1234' | ./cov | echo "saida" 
-	echo 'Nedison' | ./cov | echo "saida"
-	gcov -b crypt.gnco
+	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) main.c -fprofile-arcs -ftest-coverage -o main.out
+	- ./main.out
+	gcov -b main.gnco
+
+valgrind: compile
+	valgrind --leak-check=full --show-leak-kinds=all ./$(TARGET1)
+
+cppcheck:
+	cppcheck --enable=all --supress=missingIncludeSystem src
+
+sanitizer:
+	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) -fsanitize=address $(SRC_FILES_CRYPT) $(SRC_FILES1) -o $(TARGET1)
+	- ./$(TARGET1)
 
 ci: CFLAGS += -Werror
 ci: compile

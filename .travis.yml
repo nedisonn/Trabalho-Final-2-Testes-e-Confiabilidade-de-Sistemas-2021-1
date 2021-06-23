@@ -17,4 +17,8 @@ install:
   - "[ $GCC = gcc ] && export GCC=gcc || true"
 script:
   - make
+  - make valgrind
+  - make cppcheck
+  - make sanitizer
+  - make cov
 #  - make test

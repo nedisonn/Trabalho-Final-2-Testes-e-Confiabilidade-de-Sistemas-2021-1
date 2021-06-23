@@ -166,13 +166,6 @@ int main(void)
   RUN_TEST(TestingEncryptionXTEA_FAILWrongInput, 12);
   RUN_TEST(TestingDecryptionXTEA_FAILWrongKey, 12);
   RUN_TEST(TestingEncryptionXTEA_FAILWrongKey, 12);
-  RUN_TEST(TestingEncryptionXTEA_FAILTypeDontExist_Float, 12);
-  RUN_TEST(TestingEncryptionBLOWFISH192_FAILEncDecDontExist_Float, 12);
-  RUN_TEST(TestingDecryptionAES192_FAILTypeDontExist_MenorQue0, 12);
-  RUN_TEST(TestingDecryptionAES256_FAILEncDecDontExist_MenorQue0, 12);
-  RUN_TEST(TestingEncryptionBLOWFISH256_FAILTypeDontExist_MaiorQue6, 12);
-  RUN_TEST(TestingEncryptionBLOWFISH128_FAILEncDecDontExist_MaiorQue1, 12);
   UnityEnd();
-  //return (UnityEnd());
   return 0;
 }
