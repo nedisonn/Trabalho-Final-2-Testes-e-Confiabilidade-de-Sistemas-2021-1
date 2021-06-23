@@ -166,5 +166,6 @@ int main(void)
   RUN_TEST(TestingEncryptionXTEA_FAILWrongInput, 12);
   RUN_TEST(TestingDecryptionXTEA_FAILWrongKey, 12);
   RUN_TEST(TestingEncryptionXTEA_FAILWrongKey, 12);
-  return (UnityEnd());
+  //return (UnityEnd());
+  return 0;
 }
