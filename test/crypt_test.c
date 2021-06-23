@@ -501,3 +501,52 @@ void TestingDecryptionBLOWFISH256_FAILWrongType(void)
 
     TEST_ASSERT_EQUAL_HEX_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
 }
+
+//Teste falha type & dec_enc limite
+void TestingEncryptionBLOWFISH256_FAILTypeDontExist_MaiorQue6(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_8, input, 7, 1, output);
+
+    TEST_ASSERT_EQUAL_HEX_ARRAY_MESSAGE(expected_output_enc_BLOWFISH_256, output, 4, "FAIL is expected.");
+}
+
+void TestingDecryptionAES192_FAILTypeDontExist_MenorQue0(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_6, input_dec_AES_192, -1, 0, output);
+
+    TEST_ASSERT_EQUAL_HEX_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
+}
+
+void TestingEncryptionXTEA_FAILTypeDontExist_Float(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_4, input, 2.5, 1, output);
+
+    TEST_ASSERT_EQUAL_HEX_ARRAY_MESSAGE(expected_output_enc_XTEA, output, 4, "FAIL is expected.");
+}
+
+void TestingEncryptionBLOWFISH128_FAILEncDecDontExist_MaiorQue1(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_4, input, 4, 2, output);
+
+    TEST_ASSERT_EQUAL_HEX_ARRAY_MESSAGE(expected_output_enc_BLOWFISH_128, output, 4, "FAIL is expected.");
+}
+
+void TestingDecryptionAES256_FAILEncDecDontExist_MenorQue0(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_8, input_dec_AES_256, 3, -1, output);
+
+    TEST_ASSERT_EQUAL_HEX_ARRAY_MESSAGE(expected_output_dec, output, 4, "FAIL is expected.");
+}
+
+void TestingEncryptionBLOWFISH192_FAILEncDecDontExist_Float(void)
+{
+    unsigned int output[4] = {};
+    crypt(key_6, input, 5, 0.6, output);
+
+    TEST_ASSERT_EQUAL_HEX_ARRAY_MESSAGE(expected_output_enc_BLOWFISH_192, output, 4, "FAIL is expected.");
+}
