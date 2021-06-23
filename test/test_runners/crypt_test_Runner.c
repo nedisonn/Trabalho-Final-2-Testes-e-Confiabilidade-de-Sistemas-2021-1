@@ -71,12 +71,12 @@ extern void TestingDecryptionXTEA_FAILWrongInput(void);
 extern void TestingEncryptionXTEA_FAILWrongInput(void);
 extern void TestingDecryptionXTEA_FAILWrongKey(void);
 extern void TestingEncryptionXTEA_FAILWrongKey(void);
-extern void TestingEncryptionXTEA_FAILTypeDontExist_Float(void)
-extern void TestingEncryptionBLOWFISH192_FAILEncDecDontExist_Float(void)
-extern void TestingDecryptionAES192_FAILTypeDontExist_MenorQue0(void)
-extern void TestingDecryptionAES256_FAILEncDecDontExist_MenorQue0(void)
-extern void TestingEncryptionBLOWFISH256_FAILTypeDontExist_MaiorQue6(void)
-extern void TestingEncryptionBLOWFISH128_FAILEncDecDontExist_MaiorQue1(void)
+extern void TestingEncryptionXTEA_FAILTypeDontExist_Float(void);
+extern void TestingEncryptionBLOWFISH192_FAILEncDecDontExist_Float(void);
+extern void TestingDecryptionAES192_FAILTypeDontExist_MenorQue0(void);
+extern void TestingDecryptionAES256_FAILEncDecDontExist_MenorQue0(void);
+extern void TestingEncryptionBLOWFISH256_FAILTypeDontExist_MaiorQue6(void);
+extern void TestingEncryptionBLOWFISH128_FAILEncDecDontExist_MaiorQue1(void);
 extern void TestingDecryptionBLOWFISH256_SUCESS(void);
 extern void TestingDecryptionBLOWFISH192_SUCESS(void);
 extern void TestingDecryptionBLOWFISH128_SUCESS(void);
@@ -166,6 +166,12 @@ int main(void)
   RUN_TEST(TestingEncryptionXTEA_FAILWrongInput, 12);
   RUN_TEST(TestingDecryptionXTEA_FAILWrongKey, 12);
   RUN_TEST(TestingEncryptionXTEA_FAILWrongKey, 12);
+  RUN_TEST(TestingEncryptionXTEA_FAILTypeDontExist_Float, 12);
+  RUN_TEST(TestingEncryptionBLOWFISH192_FAILEncDecDontExist_Float, 12);
+  RUN_TEST(TestingDecryptionAES192_FAILTypeDontExist_MenorQue0, 12);
+  RUN_TEST(TestingDecryptionAES256_FAILEncDecDontExist_MenorQue0, 12);
+  RUN_TEST(TestingEncryptionBLOWFISH256_FAILTypeDontExist_MaiorQue6, 12);
+  RUN_TEST(TestingEncryptionBLOWFISH128_FAILEncDecDontExist_MaiorQue1, 12);
   //return (UnityEnd());
   return 0;
 }
