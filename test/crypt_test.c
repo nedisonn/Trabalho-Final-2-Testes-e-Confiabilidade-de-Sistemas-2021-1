@@ -522,7 +522,7 @@ void TestingDecryptionAES192_FAILTypeDontExist_MenorQue0(void)
 void TestingEncryptionXTEA_FAILTypeDontExist_Float(void)
 {
     unsigned int output[4] = {};
-    crypt((uint32_t *) key_4,(uint32_t *) input, 2.5, 1, (uint32_t *) output);
+    crypt((uint32_t *) key_4,(uint32_t *) input, (uint8_t) 2.5, 1, (uint32_t *) output);
 
     TEST_ASSERT_EQUAL_HEX_ARRAY_MESSAGE(expected_output_enc_XTEA, output, 4, "FAIL is expected.");
 }
@@ -546,7 +546,7 @@ void TestingDecryptionAES256_FAILEncDecDontExist_MenorQue0(void)
 void TestingEncryptionBLOWFISH192_FAILEncDecDontExist_Float(void)
 {
     unsigned int output[4] = {};
-    crypt((uint32_t *) key_6,(uint32_t *) input, 5, 0.6, (uint32_t *) output);
+    crypt((uint32_t *) key_6,(uint32_t *) input, 5, (uint8_t) 0.6, (uint32_t *) output);
 
     TEST_ASSERT_EQUAL_HEX_ARRAY_MESSAGE(expected_output_enc_BLOWFISH_192, output, 4, "FAIL is expected.");
 }
