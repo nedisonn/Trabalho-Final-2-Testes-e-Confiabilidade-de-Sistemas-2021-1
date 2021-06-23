@@ -72,24 +72,24 @@ run:
 
 clean:
 	$(CLEANUP) $(TARGET1)
-	sudo rm -fr $(ALL) *.o cov* *.dSYM *.gcda *.gcno *.gcov
+	rm -fr $(ALL) *.o cov* *.dSYM *.gcda *.gcno *.gcov *.out
 
 crypt: $(SRC_FILES)
 	$(CC) $(CFLAGS) $^
 	$(CC) *.o -o app
 	rm -rf *.o
 
-cov: crypt.c
-	$(GCC) $(GCCFLAGS) -fprofile-arcs -ftest-coverage -o cov crypt.c
-	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) main.c -fprofile-arcs -ftest-coverage -o main.out
-	- ./main.out
-	gcov -b main.gnco
+cov:
+	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) -fprofile-arcs -ftest-coverage $(SRC_FILES_CRYPT) $(SRC_FILES1) -o cov
+	./cov
+	gcov crypt.c crypt_test.c crypt_test_Runner.c xtea.c aes.c blowfish.c 
+	rm -fr $(ALL) *.o cov* *.dSYM *.gcda *.gcno *.gcov
 
 valgrind: compile
 	valgrind --leak-check=full --show-leak-kinds=all ./$(TARGET1)
 
 cppcheck:
-	cppcheck --enable=all --supress=missingIncludeSystem src
+	cppcheck --enable=all src
 
 sanitizer:
 	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) -fsanitize=address $(SRC_FILES_CRYPT) $(SRC_FILES1) -o $(TARGET1)
